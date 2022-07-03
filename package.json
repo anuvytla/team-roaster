@@ -1,0 +1,24 @@
+{
+  "name": "homework8-teamprofilegenerator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anuvytla/team-roaster.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anuvytla/team-roaster/issues"
+  },
+  "homepage": "https://github.com/anuvytla/team-roaster#readme",
+  "dependencies": {
+    "inquirer": "^6.5.0",
+    "jest": "^28.1.2"
+  }
+}
