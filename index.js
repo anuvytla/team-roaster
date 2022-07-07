@@ -1,11 +1,15 @@
 const fs = require('fs');
+const path = require('path');
 const inquirer = require('inquirer');
+const app = require('./src/app');
+
+let team = [];
 
 function promptEmployeeDetails(memberType) {
     infoType = '';
     if(memberType === 'Manager') {
         infoType = 'office number';
-    } else if (memberType === 'Enginner') {
+    } else if (memberType === 'Engineer') {
         infoType = 'GitHub username';
     } else {
         infoType = 'school name';
@@ -29,8 +33,7 @@ function promptEmployeeDetails(memberType) {
         name: "info"
     }
     ]).then(function({name, id, email, info}){
-        console.log(name);
-        // Create objects and add to team.
+        team.push(app.createNewEmployee(memberType, name, id, email, info));
         promptMoreEntries();
     });
 }
@@ -51,8 +54,18 @@ function promptMoreEntries(){
 }
 
 function createTeamPage(){
-    console.log('created team page');
-    // use fs to create a file and write html to it.
+    // Generate the HTML text for the team. 
+    let htmlText = app.generateTeamHTML(team);
+    // Create a README.md file and write the markdown text to it.
+    fs.writeFile(path.join(__dirname, 'dist', 'index.html'), htmlText, err => {
+      if (err) {
+          // Display if there is an error.
+          console.log(err);
+          return;
+      }
+      // Display success message to the user.
+      console.log('Success. Your team page is ready.');
+    });
 }
 
 promptEmployeeDetails('Manager');
