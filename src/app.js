@@ -19,7 +19,7 @@ function createNewEmployee(employee_type, name, id, email, info){
 function generateTeamHTML(team) {
     teamCardsHTML = '';
     for (const team_member of team) {
-        teamCardsHTML += generateMemberCard(team_member);
+        teamCardsHTML += team_member.getHTMLCard();
     }
 
     return `<!DOCTYPE html>
@@ -36,37 +36,6 @@ function generateTeamHTML(team) {
                 ${teamCardsHTML}
             </body>
             </html>`;
-}
-
-function generateMemberCard(team_member) {
-
-    let info = '';
-
-    switch(team_member.getRole()) {
-        case 'Manager':
-            info = team_member.getOfficeNumber();
-            break;
-        case 'Engineer':
-            info = team_member.getGithub();
-            break;
-        case 'Intern':
-            info = team_member.getSchool();
-            break;
-        default:
-            break;
-    }
-
-    return `<div class="card" style="width: 18rem;">
-                <div class="card-header">
-                    <h4>${team_member.getName()}</h4>
-                    <h5>${team_member.getRole()}</h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Employee #: ${team_member.getId()}</li>
-                    <li class="list-group-item">${team_member.getEmail()}</li>
-                    <li class="list-group-item">${info}</li>
-                </ul>
-            </div>`;
 }
 
 exports.createNewEmployee = createNewEmployee;
