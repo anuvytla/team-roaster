@@ -32,8 +32,10 @@ function generateTeamHTML(team) {
                 <title>Team Roaster</title>
             </head>
             <body>
-                <h1 id="header">Team Roaster</h1>
-                ${teamCardsHTML}
+                <h1 class="header col-12 text-center">Team Roaster</h1>
+                <div class="row justify-content-center">
+                    ${teamCardsHTML}
+                </div>
             </body>
             </html>`;
 }
