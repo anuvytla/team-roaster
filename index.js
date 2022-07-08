@@ -5,7 +5,9 @@ const app = require('./src/app');
 
 let team = [];
 
+// Helper function to prompt appropriate questions based on the type of the employee.
 function promptEmployeeDetails(memberType) {
+    // infoType describes the additional info needed for the given type of employee
     infoType = '';
     if(memberType === 'Manager') {
         infoType = 'office number';
@@ -15,6 +17,7 @@ function promptEmployeeDetails(memberType) {
         infoType = 'school name';
     }
 
+    // Create prompts using inquirer.
     inquirer.prompt([{
         message: `Enter name of the ${memberType}`,
         name: "name"
@@ -33,11 +36,14 @@ function promptEmployeeDetails(memberType) {
         name: "info"
     }
     ]).then(function({name, id, email, info}){
+        // Once all the questions for the employee have been answered, create an instance of approriate class and add it to the team array.
         team.push(app.createNewEmployee(memberType, name, id, email, info));
+        // Prompt for another Employee after saving the previous one.
         promptMoreEntries();
     });
 }
 
+// Helper function to provide an option to add an Engineer, Intern or end.
 function promptMoreEntries(){
     inquirer.prompt([{
         message: "Do you want to add more members to the team?",
@@ -53,6 +59,7 @@ function promptMoreEntries(){
     });
 }
 
+// Generates the HTML text and saves it to a file.
 function createTeamPage(){
     // Generate the HTML text for the team. 
     let htmlText = app.generateTeamHTML(team);
@@ -68,4 +75,5 @@ function createTeamPage(){
     });
 }
 
+// On app start, prompt the details of the team Manager.
 promptEmployeeDetails('Manager');

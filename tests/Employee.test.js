@@ -1,5 +1,6 @@
 const Employee = require("../lib/Employee");
 
+// Tests for verifying the behavior of Employee class.
 describe('Employee' , () => {
     it('Should return an object on initialization', () => {
         let employee = new Employee('Tester', 1, 'tester@team.com');

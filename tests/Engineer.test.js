@@ -1,5 +1,6 @@
 const Engineer = require('../lib/Engineer');
 
+// Tests for verifying the behavior of Engineer class.
 describe('Engineer', () => {
     it('Should return an object on intialization',() => {
         let engineer = new Engineer('Tester', 1, 'tester@team.com');

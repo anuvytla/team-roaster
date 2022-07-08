@@ -1,12 +1,13 @@
 const Intern = require("../lib/Intern");
 
-describe('Employee' , () => {
+// Tests for verifying the behavior of Intern class.
+describe('Intern' , () => {
     it('Should return an object on initialization', () => {
         let intern = new Intern('Tester', 1, 'tester@team.com');
         expect(typeof intern).toBe('object');
     });
 
-    it('Should save and return employee details', () => {
+    it('Should save and return intern details', () => {
         let intern = new Intern('Tester', 1, 'tester@team.com');
         expect(intern.getName()).toBe('Tester');
         expect(intern.getId()).toBe(1);

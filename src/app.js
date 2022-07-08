@@ -3,6 +3,7 @@ const Manager = require("../lib/Manager");
 const Engineer = require("../lib/Engineer");
 const Intern = require("../lib/Intern");
 
+// Helper function to create an instance of appropriate class based on the employee type.
 function createNewEmployee(employee_type, name, id, email, info){
     switch (employee_type) {
         case 'Manager':
@@ -16,12 +17,15 @@ function createNewEmployee(employee_type, name, id, email, info){
     }
 }
 
+// Helper function that takes in an array of `team` members and returns the generated HTML for the team.
 function generateTeamHTML(team) {
+    // Generate the HTML card for each of the team member.
     teamCardsHTML = '';
     for (const team_member of team) {
         teamCardsHTML += team_member.getHTMLCard();
     }
 
+    // Create HTML by embedding the cards HTML generated.
     return `<!DOCTYPE html>
             <html lang="en">
             <head>
